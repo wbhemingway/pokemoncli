@@ -16,6 +16,7 @@ func (c *Client) ListLocations(pageURL *string) (RespLocations, error) {
 	if err != nil {
 		return RespLocations{}, fmt.Errorf("error creating request from url: %w", err)
 	}
+	
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return RespLocations{}, fmt.Errorf("error getting response from url: %w", err)
