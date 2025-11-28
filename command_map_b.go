@@ -2,18 +2,17 @@ package main
 
 import (
 	"fmt"
-	"github.com/wbhemingway/pokedexcli/internal/pokeapi"
 )
 
 func commandMapB(cfg *config) error {
-	names, newPrev, newNext, err := pokeapi.GetLocationAreas(cfg.prev)
+	resp, err := cfg.pokeapiClient.ListLocations(cfg.prev)
 	if err != nil {
 		return err
 	}
-	cfg.next = newNext
-	cfg.prev = newPrev
-	for _, name := range names {
-		fmt.Println(name)
+	cfg.next = resp.Next
+	cfg.prev = resp.Prev
+	for _, res := range resp.Results {
+		fmt.Println(res.Name)
 	}
 	return nil
 }
