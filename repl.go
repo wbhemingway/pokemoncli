@@ -17,8 +17,8 @@ type cliCommand struct {
 
 type config struct {
 	pokeapiClient pokeapi.Client
-	next *string
-	prev *string
+	next          *string
+	prev          *string
 }
 
 var commands map[string]cliCommand

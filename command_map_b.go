@@ -5,6 +5,10 @@ import (
 )
 
 func commandMapB(cfg *config) error {
+	if cfg.prev == nil {
+		fmt.Println("You're on the first page")
+		return nil
+	}
 	resp, err := cfg.pokeapiClient.ListLocations(cfg.prev)
 	if err != nil {
 		return err
